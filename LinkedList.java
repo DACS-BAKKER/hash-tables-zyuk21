@@ -1,7 +1,7 @@
 /*
-Name: Alex Yuk
-Date: 1/13/2020
-File: LinkedList
+ Date: 13/01/2020
+ Name: Alex Yuk
+ File: LinkedList
  */
 
 import java.util.Iterator;

@@ -1,3 +1,9 @@
+/*
+ Date: 13/01/2020
+ Name: Alex Yuk
+ File: ThousandWords, HashTable Tester
+ */
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -8,6 +14,7 @@ public class ThousandWords {
 
     private static ArrayList<String> dictionary = new ArrayList<>();
 
+    // Used to keep track of stats
     private static ArrayList<Double> putCounter = new ArrayList<>();
     private static ArrayList<Double> hitCounter = new ArrayList<>();
     private static ArrayList<Double> missCounter = new ArrayList<>();
@@ -41,6 +48,8 @@ public class ThousandWords {
         writeFile();
     }
 
+    // The main file that the program will output. The first row are the prime numbers, second row are the put averages
+    // third is the hit averages, fourth is the miss averages, and the last is the load capacities
     private static void writeFile() {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("output/Counts.txt"));
