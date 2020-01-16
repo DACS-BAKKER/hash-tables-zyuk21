@@ -1,34 +1,45 @@
+/*
+ Date: 13/01/2020
+ Name: Alex Yuk
+ File: ConcordanceController
+ */
+
 public class ConcordanceController {
 
-    static ConcordanceView V;
-    static ConcordanceModel M;
+    private static ConcordanceView V;
+    private static ConcordanceModel M;
+    
+    private int currentFile;
 
     public static void main (String[]args) {
+        // Creating instances of View and Model to interact between them
         V = new ConcordanceView();
         M = new ConcordanceModel();
-
-//        System.out.println(M.hamletHT.get("end").get(16).location[2]);
-//        for (int i = 0; i < M.hamletHT.get("shoot").size(); i++) {
-//            System.out.println("Act: " + M.hamletHT.get("shoot").get(i).location[0] + " Scene: " + M.hamletHT.get("shoot").get(i).location[1] + " Line: " + M.hamletHT.get("shoot").get(i).location[2]);
-//        }
     }
 
-    public static void getLocation(String key) {
+    // Lists location of all occurrences of Key on graphic
+    public void getLocation(String key) {
         V.lineModel.clear();
 
-        if (M.sonnetHT.get(key) != null) {
-            for (int i = 0; i < M.sonnetHT.get(key).size(); i++) {
-                V.listLocation(("Sonnet: " + M.sonnetHT.get(key).get(i).location[0] + " Line: " + M.sonnetHT.get(key).get(i).location[1]));
-            }
-            V.information.setText("Occurrences: " + M.sonnetHT.get(key).size());
+        if (M.hashTableList.get(currentFile).get(key) != null) {
+            for (int i = 0; i < M.hashTableList.get(currentFile).get(key).size(); i++)
+                V.listLocation((M.hashTableList.get(currentFile).get(key).get(i).toString()));
+            V.information.setText("Occurrences: " + M.hashTableList.get(currentFile).get(key).size());
         }
-        else {
+        else
             V.information.setText("Word not found");
-        }
-
     }
 
-    public static void showContext(int index) {
-        V.context.setText(M.sonnets.get(M.sonnetHT.get(V.currentKey).get(index).location[0] - 1));
+    // Shows context of specific choice on occurrences
+    public void showContext(int index) {
+        if (currentFile == 0)
+            V.context.setText(M.sonnetContext.get(M.sonnetHT.get(V.currentKey).get(index).location[0] - 1));
+        else
+            V.context.setText(M.hamletContext.get( M.hamletHT.get(V.currentKey).get(index).location[0]));
+    }
+
+
+    public void changeFile(int index) {
+        currentFile = index;
     }
 }

@@ -1,3 +1,9 @@
+/*
+ Date: 13/01/2020
+ Name: Alex Yuk
+ File: HashTable
+ */
+
 public class HashTable<Key, Value> {
 
     private Key[] keys;
@@ -89,10 +95,6 @@ public class HashTable<Key, Value> {
 
     public static void main(String[]args) {
         HashTable<String, Integer> ht = new HashTable<>(2087);
-
         ht.put("asd", 0);
-
-
-
     }
 }
